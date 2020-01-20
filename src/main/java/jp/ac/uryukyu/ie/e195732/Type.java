@@ -8,15 +8,15 @@ class Type {
     private String[] resist;
     private String[] invalid;
 
-    int typeCompatibilityCorrection(Type executer){
+    int typeCompatibilityCorrection(String executer){
         for (int i=0; i<this.weak.length; i++ )
-            if (executer.name.equals(this.weak[i])){ return 2; }
+            if (executer.equals(this.weak[i])){ return 2; }
 
         for(int i=0; i<this.resist.length; i++)
-            if (executer.name.equals(this.resist[i])){ return (1/2); }
+            if (executer.equals(this.resist[i])){ return (1/2); }
 
         for(int i=0; i<this.invalid.length; i++)
-            if (executer.name.equals(this.invalid[i])){ return 0; }
+            if (executer.equals(this.invalid[i])){ return 0; }
 
         return 1;}
 
@@ -36,6 +36,8 @@ class Type {
     public void setInvalid(String[] invalid) {
         this.invalid = invalid;
     }
+
+    public String getName() { return name; }
 }
 
 class Dragon extends Type{
@@ -88,8 +90,8 @@ class Evil extends Type{
 class Fairy extends Type{
     Fairy(){
         setName("fairy");
-        setWeak(new String[]{"grass", "ice", "water"});
-        setResist(new String[]{"poison", "steel"});
+        setWeak(new String[]{"poison", "steel"});
+        setResist(new String[]{"evil", "fighter", "insect"});
         setInvalid(new String[]{"dragon"});
     }
 }
@@ -133,8 +135,8 @@ class Ghost extends Type{
 class Grass extends Type{
     Grass(){
         setName("grass");
-        setWeak(new String[]{"earth", "rock", "water"});
-        setResist(new String[]{"fright", "fire", "ice", "insect", "poison"});
+        setWeak(new String[]{"fright", "fire", "ice", "insect", "poison"});
+        setResist(new String[]{"earth", "rock", "water"});
         setInvalid(new String[]{});
     }
 }
@@ -151,8 +153,8 @@ class Ice extends Type{
 class Insect extends Type{
     Insect(){
         setName("insect");
-        setWeak(new String[]{"earth", "rock", "water"});
-        setResist(new String[]{"fire", "fright", "rock"});
+        setWeak(new String[]{"fire", "fright", "rock"});
+        setResist(new String[]{"earth", "rock", "water"});
         setInvalid(new String[]{});
     }
 }
