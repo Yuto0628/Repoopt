@@ -1,5 +1,203 @@
 package jp.ac.uryukyu.ie.e195732;
 
-public class Type {
+import java.util.ArrayList;
 
+class Type {
+    private String name;
+    private String[] weak;
+    private String[] resist;
+    private String[] invalid;
+
+    int typeCompatibilityCorrection(Type executer){
+        for (int i=0; i<this.weak.length; i++ )
+            if (executer.name.equals(this.weak[i])){ return 2; }
+
+        for(int i=0; i<this.resist.length; i++)
+            if (executer.name.equals(this.resist[i])){ return (1/2); }
+
+        for(int i=0; i<this.invalid.length; i++)
+            if (executer.name.equals(this.invalid[i])){ return 0; }
+
+        return 1;}
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setWeak(String[] weak) {
+        this.weak = weak;
+    }
+
+    public void setResist(String[] resist) {
+        this.resist = resist;
+    }
+
+    public void setInvalid(String[] invalid) {
+        this.invalid = invalid;
+    }
+}
+
+class Dragon extends Type{
+    Dragon(){
+        setName("dragon");
+        setWeak(new String[]{"dragon", "fairy", "ice"});
+        setResist(new String[]{"electricity", "fire", "grass", "water"});
+        setInvalid(new String[]{});
+    }
+
+}
+
+class Earth extends Type{
+    Earth(){
+        setName("earth");
+        setWeak(new String[]{"grass", "ice", "water"});
+        setResist(new String[]{"poison", "rock"});
+        setInvalid(new String[]{"electricity"});
+    }
+
+}
+
+class Electricity extends Type{
+    Electricity(){
+        setName("electricity");
+        setWeak(new String[]{"earth"});
+        setResist(new String[]{"electricity", "fright", "steel"});
+        setInvalid(new String[]{});
+    }
+}
+
+class Esper extends Type{
+    Esper(){
+        setName("esper");
+        setWeak(new String[]{"evil", "ghost", "insect"});
+        setResist(new String[]{"esper", "fighter"});
+        setInvalid(new String[]{});
+    }
+}
+
+class Evil extends Type{
+    Evil(){
+        setName("evil");
+        setWeak(new String[]{"fairy", "fighter", "insect"});
+        setResist(new String[]{"ghost", "evjl"});
+        setInvalid(new String[]{"esper"});
+    }
+}
+
+class Fairy extends Type{
+    Fairy(){
+        setName("fairy");
+        setWeak(new String[]{"grass", "ice", "water"});
+        setResist(new String[]{"poison", "steel"});
+        setInvalid(new String[]{"dragon"});
+    }
+}
+
+class Fighter extends Type{
+    Fighter(){
+        setName("fight");
+        setWeak(new String[]{"esper", "fairy", "fright"});
+        setResist(new String[]{"evil", "insect", "rock"});
+        setInvalid(new String[]{});
+    }
+}
+
+class Fire extends Type{
+    Fire(){
+        setName("fire");
+        setWeak(new String[]{"earth", "rock", "water"});
+        setResist(new String[]{"fairy", "grass", "ice", "insect", "steel"});
+        setInvalid(new String[]{});
+    }
+}
+
+class Fright extends Type{
+    Fright(){
+        setName("fright");
+        setWeak(new String[]{"electricity", "ice", "rock"});
+        setResist(new String[]{"insect", "grass"});
+        setInvalid(new String[]{"earth"});
+    }
+}
+
+class Ghost extends Type{
+    Ghost(){
+        setName("ghost");
+        setWeak(new String[]{"evil", "ghost"});
+        setResist(new String[]{"insect", "poison"});
+        setInvalid(new String[]{"normal"});
+    }
+}
+
+class Grass extends Type{
+    Grass(){
+        setName("grass");
+        setWeak(new String[]{"earth", "rock", "water"});
+        setResist(new String[]{"fright", "fire", "ice", "insect", "poison"});
+        setInvalid(new String[]{});
+    }
+}
+
+class Ice extends Type{
+    Ice(){
+        setName("ice");
+        setWeak(new String[]{"fire", "fighter", "rock", "steel"});
+        setResist(new String[]{"ice"});
+        setInvalid(new String[]{});
+    }
+}
+
+class Insect extends Type{
+    Insect(){
+        setName("insect");
+        setWeak(new String[]{"earth", "rock", "water"});
+        setResist(new String[]{"fire", "fright", "rock"});
+        setInvalid(new String[]{});
+    }
+}
+
+class Normal extends Type{
+    Normal(){
+        setName("normal");
+        setWeak(new String[]{"fighter"});
+        setResist(new String[]{});
+        setInvalid(new String[]{"ghost"});
+    }
+}
+
+class Poison extends Type{
+    Poison(){
+        setName("poison");
+        setWeak(new String[]{"earth", "esper"});
+        setResist(new String[]{"fairy", "fighter", "grass", "insect", "poison"});
+        setInvalid(new String[]{});
+    }
+}
+
+class Rock extends Type{
+    Rock(){
+        setName("rock");
+        setWeak(new String[]{"fighter", "earth", "grass", "steel", "water"});
+        setResist(new String[]{"fire", "fright", "normal", "poison"});
+        setInvalid(new String[]{});
+    }
+}
+
+class Steel extends Type{
+    Steel(){
+        setName("steel");
+        setWeak(new String[]{"earth", "fire", "fighter"});
+        setResist(new String[]{"dragon", "esper", "fairy", "fright", "grass", "ice", "insect", "normal", "rock", "steel"});
+        setInvalid(new String[]{"poison"});
+    }
+}
+
+class Water extends Type{
+    Water(){
+        setName("water");
+        setWeak(new String[]{"electricity", "grass"});
+        setResist(new String[]{"fire", "ice", "steel", "water"});
+        setInvalid(new String[]{});
+    }
 }
