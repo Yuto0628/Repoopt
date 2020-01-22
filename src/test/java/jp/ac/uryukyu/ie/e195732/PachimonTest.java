@@ -2,54 +2,25 @@ package jp.ac.uryukyu.ie.e195732;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class PachimonTest {
-    public class Party {
-        private String trainnerName;
-        private boolean lose = false;
-        private int dyingCount = 0;
-        private Pachimon[] pachimons;
+    Party redTeam = new Party("レッド", new Pachimon[]{new Charizard()});
+    Party greenTeam = new Party("グリーン", new Pachimon[]{new Venusaur()});
+    GameMaster gameMaster = new GameMaster(redTeam, greenTeam);
 
-        public void setTrainnerName(String trainnerName) { this.trainnerName = trainnerName; }
 
-        public void setLose(boolean lose) { this.lose = lose; }
-
-        public void setDyingCount(int dyingCount) { this.dyingCount = dyingCount; }
-
-        public void setPachimons(Pachimon[] pachimons) { this.pachimons = pachimons; }
-
-        public String getTrainnerName() { return trainnerName; }
-
-        public boolean isLose() { return lose; }
-
-        public int getDyingCount() { return dyingCount; }
-
-        public Pachimon[] getPachimons() { return pachimons; }
-
-        Party(String  trainnerName, Pachimon[] pachimons){
-            this.setTrainnerName(trainnerName);
-            for (int i=0; i<pachimons.length; i++){
-                setPachimons(new Pachimon[i]);
-            }
-            setDyingCount(pachimons.length);
-        }
-    }
     @Test
     void doTest(){
-        int n=0;
-        for (int  i=0; i<5; i++){
-            n++;
-            System.out.println(n);
-        }
-    }
-    @Test
-    void doTest2(){
-        Party party1 = new Party("taro", new Pachimon[]{new Charizard()});
-        Party party2  = new Party("jiro", new Pachimon[]{new Venusaur(), new Blastoise()});
-        assertEquals(1, party1.getDyingCount());
-        assertEquals(2, party2.getDyingCount());
+        redTeam.getMember()[0].setHp(0);
+        gameMaster.pachimonHpCheck(redTeam);
+        Pachimon[] pachimons = new Pachimon[2];
+        pachimons[0] = new Charizard();
+        pachimons[1] = new Venusaur();
+        gameMaster.showHp(pachimons[0]);
+        gameMaster.showHp(pachimons[1]);
     }
 }
+

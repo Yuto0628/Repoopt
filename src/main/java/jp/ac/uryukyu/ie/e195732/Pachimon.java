@@ -3,7 +3,7 @@ package jp.ac.uryukyu.ie.e195732;
 import java.util.Random;
 
 class Pachimon {
-    private boolean isDead = false;
+    private boolean dead = false;
     private String name;
     private Type[] type;
     private Skill[] skills;
@@ -13,6 +13,7 @@ class Pachimon {
     private int raceContact;
     private int raceDiffence;
     private int raceSpeed;
+    private int maxHp;
     private int hp;
     private int attack;
     private int brock;
@@ -48,13 +49,15 @@ class Pachimon {
         }
     }
 
-    public void setDead(boolean dead) { isDead = dead; }
+    public void setDead(boolean dead) { dead = dead; }
 
     public void setName(String name) { this.name = name; }
 
     public void setType(Type[] type) { this.type = type; }
 
     public void setSkills(Skill[] skills) { this.skills = skills; }
+
+    public void setMaxHp(int maxHp) { this.maxHp = maxHp; }
 
     public void setHp(int hp) { this.hp = hp; }
 
@@ -80,6 +83,8 @@ class Pachimon {
 
     public void setRaceSpeed(int raceSpeed) { this.raceSpeed = raceSpeed; }
 
+    public boolean isDead(){return dead;}
+
     public String getName() { return name; }
 
     public Type[] getType() { return type; }
@@ -98,6 +103,8 @@ class Pachimon {
 
     public int getRaceSpeed() { return raceSpeed; }
 
+    public int getMaxHp() { return maxHp; }
+
     public int getHp() { return hp; }
 
     public int getBrock() { return brock; }
@@ -109,7 +116,7 @@ class Pachimon {
 
 class Venusaur extends Pachimon {
     Venusaur() {
-        setName("venusaur");
+        setName("フシギバナ");
         setType(new Type[]{new Grass(), new Poison()});
         setSkills(new Skill[]{new LeafStorm(), new SludgeBomb(), new WeatherBall(), new BodySlam()});
 
@@ -120,6 +127,7 @@ class Venusaur extends Pachimon {
         setRaceDiffence(100);
         setRaceSpeed(80);
 
+        setMaxHp(culcHp(getRaceHp()));
         setHp(culcHp(getRaceHp()));
         setAttack(culcStatus(getRaceAttack()));
         setBrock(culcStatus(getRaceBlock()));
@@ -131,7 +139,7 @@ class Venusaur extends Pachimon {
 
 class Charizard extends Pachimon {
     Charizard() {
-        setName("charizard");
+        setName("リザードン");
         setType(new Type[]{new Fire(), new Fright()});
         setSkills(new Skill[]{new AirSlash(), new FlareBlitz(), new Earthquake(), new FocusBlast()});
 
@@ -142,6 +150,7 @@ class Charizard extends Pachimon {
         setRaceDiffence(85);
         setRaceSpeed(100);
 
+        setMaxHp(culcHp(getRaceHp()));
         setHp(culcHp(getRaceHp()));
         setAttack(culcStatus(getRaceAttack()));
         setBrock(culcStatus(getRaceBlock()));
@@ -153,7 +162,7 @@ class Charizard extends Pachimon {
 
 class Blastoise extends Pachimon{
     Blastoise(){
-        setName("blastoise");
+        setName("カメックス");
         setType(new Type[]{new Water()});
         setSkills(new Skill[]{new AquaTail(), new BrickBreak(), new DragonPulse(), new BodySlam()});
 
@@ -164,6 +173,7 @@ class Blastoise extends Pachimon{
         setRaceDiffence(105);
         setRaceSpeed(78);
 
+        setMaxHp(culcHp(getRaceHp()));
         setHp(culcHp(getRaceHp()));
         setAttack(culcStatus(getRaceAttack()));
         setBrock(culcStatus(getRaceBlock()));
@@ -175,7 +185,7 @@ class Blastoise extends Pachimon{
 
 class Raichu extends Pachimon{
     Raichu(){
-        setName("raichu");
+        setName("ライチュウ");
         setType(new Type[]{new Electricity()});
         setSkills(new Skill[]{new Thunderbolt(), new FocusBlast(), new BrickBreak(), new BodySlam()});
 
@@ -186,6 +196,7 @@ class Raichu extends Pachimon{
         setRaceDiffence(80);
         setRaceSpeed(110);
 
+        setMaxHp(culcHp(getRaceHp()));
         setHp(culcHp(getRaceHp()));
         setAttack(culcStatus(getRaceAttack()));
         setBrock(culcStatus(getRaceBlock()));
@@ -197,7 +208,7 @@ class Raichu extends Pachimon{
 
 class Aerodactyl extends Pachimon{
     Aerodactyl(){
-        setName("aerodactyl");
+        setName("プテラ");
         setType(new Type[]{new Rock(), new Fright()});
         setSkills(new Skill[]{new Crunch(), new RockSlide(), new WingAttack(), new AquaTail()});
 
@@ -208,6 +219,7 @@ class Aerodactyl extends Pachimon{
         setRaceDiffence(75);
         setRaceSpeed(130);
 
+        setMaxHp(culcHp(getRaceHp()));
         setHp(culcHp(getRaceHp()));
         setAttack(culcStatus(getRaceAttack()));
         setBrock(culcStatus(getRaceBlock()));
@@ -219,7 +231,7 @@ class Aerodactyl extends Pachimon{
 
 class Snorlax extends Pachimon{
     Snorlax(){
-        setName("snorlax");
+        setName("カビゴン");
         setType(new Type[]{new Normal()});
         setSkills(new Skill[]{new BodySlam(), new Earthquake(), new Crunch(), new Flamethrower()});
 
@@ -230,6 +242,7 @@ class Snorlax extends Pachimon{
         setRaceDiffence(110);
         setRaceSpeed(30);
 
+        setMaxHp(culcHp(getRaceHp()));
         setHp(culcHp(getRaceHp()));
         setAttack(culcStatus(getRaceAttack()));
         setBrock(culcStatus(getRaceBlock()));
