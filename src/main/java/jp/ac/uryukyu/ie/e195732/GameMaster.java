@@ -35,21 +35,25 @@ public class GameMaster {
             }else {
                 battle(fighter.get(0), fighter.get(1), randomSkill1, randomSkill2);}
 
+            System.out.println("");
             showHp(fighter.get(0));
             showHp(fighter.get(1));
+            System.out.println("");
 
             if(fighter.get(0).isDead()){
                 parties.get(0).setDyingCount(parties.get(0).getDyingCount()-1);
                 if(parties.get(0).getDyingCount()==0){
                     parties.get(0).setLose(true);
-                    System.out.println(parties.get(0).getTrainnerName()+"は目の前が真っ暗になった");
+                    System.out.println(parties.get(0).getTrainnerName()+"は目の前が真っ暗になった...");
+                    System.out.println("");
                 }
             }
             if(fighter.get(1).isDead()){
                 parties.get(1).setDyingCount(parties.get(1).getDyingCount()-1);
                 if(parties.get(1).getDyingCount()==0){
                     parties.get(1).setLose(true);
-                    System.out.println(parties.get(1).getTrainnerName()+"は目の前が真っ暗になった");
+                    System.out.println(parties.get(1).getTrainnerName()+"は目の前が真っ暗になった...");
+                    System.out.println("");
                 }
             }
         }
@@ -60,7 +64,8 @@ public class GameMaster {
             pachimon1.execute(pachimon2, pachimon1.getSkills()[num1]);
             System.out.println(pachimon1.getName()+"の"+pachimon1.getSkills()[num1].getName()+"!");
             printCompatibility(pachimon1, pachimon2, num1);
-            checkDead(pachimon2); }
+            checkDead(pachimon2);
+        }
 
         if (!pachimon2.isDead()){
             pachimon2.execute(pachimon1, pachimon2.getSkills()[num2]);
@@ -74,7 +79,7 @@ public class GameMaster {
         if(compatibility == 0){
             System.out.println("しかし効果はないようだ...");
         }
-        if(compatibility < 1){
+        else if(compatibility < 1){
             System.out.println("しかし効果はいまひとつのようだ...");
         }
         if(compatibility >= 2){
