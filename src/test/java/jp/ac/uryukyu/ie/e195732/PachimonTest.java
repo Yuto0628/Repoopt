@@ -14,13 +14,7 @@ class PachimonTest {
 
     @Test
     void doTest(){
-        redTeam.getMember()[0].setHp(0);
-        gameMaster.pachimonHpCheck(redTeam);
-        Pachimon[] pachimons = new Pachimon[2];
-        pachimons[0] = new Charizard();
-        pachimons[1] = new Venusaur();
-        gameMaster.showHp(pachimons[0]);
-        gameMaster.showHp(pachimons[1]);
+        gameMaster.battle(gameMaster.fighter.get(0), gameMaster.fighter.get(1), 3,3);
     }
 }
 

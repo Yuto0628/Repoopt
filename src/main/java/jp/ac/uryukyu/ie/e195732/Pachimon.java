@@ -31,86 +31,62 @@ class Pachimon {
 
     void execute(Pachimon target, Skill skill) {
         Random random = new Random();
-        int compatibility = 1;
+        double compatibility = 1;
         int randomInt = (85 + random.nextInt(16));
+        compatibility = checkCompatibility(target, skill);
+
         if (skill.getSkillType().equals(skill.getDirect())) {
-            for (int i = 0; i < target.getType().length; i++) {
-                compatibility = compatibility * target.getType()[i].typeCompatibilityCorrection(skill.getType());
-            } //タイプ相性補正
-            int damage = (int) (Math.floor((Math.floor(22 * this.attack * skill.getPower() / 50 / target.getBrock() + 2) * randomInt) / 100));
+            int damage = (int) (Math.floor((Math.floor(22 * this.attack * skill.getPower() * compatibility / 50 / target.getBrock() + 2) * randomInt) / 100));
+            if(compatibility == 0){
+                damage = 0;}
             target.setHp(target.getHp() - damage);
         }
         if (skill.getSkillType().equals(skill.getSpecial())) {
-            for (int i = 0; i < target.getType().length; i++) {
-                compatibility = compatibility * target.getType()[i].typeCompatibilityCorrection(skill.getType());
-            } //タイプ相性補正
-            int damage = (int) (Math.floor((Math.floor(22 * this.contact * skill.getPower() * compatibility / 50 / target.getDiffence() + 2) * randomInt) / 100));
+            int damage = (int) (Math.floor((Math.floor(22 *this.contact * skill.getPower() *compatibility /50 /target.getDiffence() +2) * randomInt) / 100));
+            if(compatibility == 0){
+                damage = 0;}
             target.setHp(target.getHp() - damage);
         }
     }
+    double checkCompatibility(Pachimon target, Skill skill){//タイプ相性補正を求める
+        double compatibility = 1;
+        for (int i = 0; i < target.getType().length; i++) {
+            compatibility = compatibility * target.getType()[i].typeCompatibilityCorrection(skill.getType());
+        }
+        return compatibility;}
 
-    public void setDead(boolean dead) { dead = dead; }
-
+    public void setDead(boolean dead) { this.dead = dead; }
     public void setName(String name) { this.name = name; }
-
     public void setType(Type[] type) { this.type = type; }
-
     public void setSkills(Skill[] skills) { this.skills = skills; }
-
     public void setMaxHp(int maxHp) { this.maxHp = maxHp; }
-
     public void setHp(int hp) { this.hp = hp; }
-
     public void setAttack(int attack) { this.attack = attack; }
-
     public void setBrock(int brock) { this.brock = brock; }
-
     public void setContact(int contact) { this.contact = contact; }
-
     public void setDiffence(int diffence) { this.diffence = diffence; }
-
     public void setSpeed(int speed) { this.speed = speed; }
-
     public void setRaceHp(int raceHp) { this.raceHp = raceHp; }
-
     public void setRaceAttack(int raceAttack) { this.raceAttack = raceAttack; }
-
     public void setRaceBlock(int raceBlock) { this.raceBlock = raceBlock; }
-
     public void setRaceContact(int raceContact) { this.raceContact = raceContact; }
-
     public void setRaceDiffence(int raceDiffence) { this.raceDiffence = raceDiffence; }
-
     public void setRaceSpeed(int raceSpeed) { this.raceSpeed = raceSpeed; }
 
     public boolean isDead(){return dead;}
-
     public String getName() { return name; }
-
     public Type[] getType() { return type; }
-
     public Skill[] getSkills() { return skills; }
-
     public int getRaceHp() { return raceHp; }
-
     public int getRaceAttack() { return raceAttack;}
-
     public int getRaceBlock() { return raceBlock; }
-
     public int getRaceContact() { return raceContact; }
-
     public int getRaceDiffence() { return raceDiffence; }
-
     public int getRaceSpeed() { return raceSpeed; }
-
     public int getMaxHp() { return maxHp; }
-
     public int getHp() { return hp; }
-
     public int getBrock() { return brock; }
-
     public int getDiffence() { return diffence; }
-
     public int getSpeed() { return speed; }
 }
 

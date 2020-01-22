@@ -32,6 +32,7 @@ class Skill {
     public String getDirect() { return direct; }
 
     public String getSpecial() { return special; }
+
 }
 
 class AquaTail extends Skill{

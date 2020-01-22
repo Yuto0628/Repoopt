@@ -7,7 +7,6 @@ public class Party {
     private Pachimon[] member;
 
     Party(String  trainerName, Pachimon[] member){
-        this.member = new Pachimon[member.length];
         this.member = member;
         this.setTrainnerName(trainerName);
         setDyingCount(member.length);
@@ -18,8 +17,6 @@ public class Party {
     public void setLose(boolean lose) { this.lose = lose; }
 
     public void setDyingCount(int dyingCount) { this.dyingCount = dyingCount; }
-
-    public void setMember(Pachimon[] member) { this.member = member; }
 
     public String getTrainnerName() { return trainerName; }
 

@@ -8,12 +8,12 @@ class Type {
     private String[] resist;
     private String[] invalid;
 
-    int typeCompatibilityCorrection(String executer){
+    double typeCompatibilityCorrection(String executer){
         for (int i=0; i<this.weak.length; i++ )
             if (executer.equals(this.weak[i])){ return 2; }
 
         for(int i=0; i<this.resist.length; i++)
-            if (executer.equals(this.resist[i])){ return (1/2); }
+            if (executer.equals(this.resist[i])){ return 0.5; }
 
         for(int i=0; i<this.invalid.length; i++)
             if (executer.equals(this.invalid[i])){ return 0; }
@@ -98,7 +98,7 @@ class Fairy extends Type{
 
 class Fighter extends Type{
     Fighter(){
-        setName("fight");
+        setName("fighter");
         setWeak(new String[]{"esper", "fairy", "fright"});
         setResist(new String[]{"evil", "insect", "rock"});
         setInvalid(new String[]{});
