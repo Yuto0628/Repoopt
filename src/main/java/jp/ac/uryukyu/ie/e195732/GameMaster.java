@@ -96,18 +96,7 @@ public class GameMaster {
         System.out.println(pachimon.getName()+":"+pachimon.getHp()+"/"+pachimon.getMaxHp());
     }
 
-    public static void main(String[] args){
-        Party redTeam1 = new Party("レッド", new Pachimon[]{new Charizard()});
-        Party greenTeam1 = new Party("グリーン", new Pachimon[]{new Venusaur()});
-        Party redTeam2 = new Party("レッド",  new Pachimon[]{new Aerodactyl()});
-        Party greenTeam2 =  new Party("グリーン", new Pachimon[]{new Snorlax()});
 
-        GameMaster  gameMaster1 =  new GameMaster(redTeam1, greenTeam1);
-        gameMaster1.playGame();
-
-        GameMaster gameMaster2 = new GameMaster(redTeam2, greenTeam2);
-        gameMaster2.playGame();
-    }
 
     public ArrayList<Pachimon> getFighter() { return fighter; }
     public ArrayList<Party> getParties() { return parties; }
