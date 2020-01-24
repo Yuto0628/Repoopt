@@ -1,7 +1,5 @@
 package jp.ac.uryukyu.ie.e195732;
 
-import java.util.ArrayList;
-
 class Type {
     private String name;
     private String[] weak;

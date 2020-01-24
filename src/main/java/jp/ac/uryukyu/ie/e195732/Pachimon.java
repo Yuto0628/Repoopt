@@ -7,6 +7,7 @@ class Pachimon {
     private String name;
     private Type[] type;
     private Skill[] skills;
+
     private int raceHp;
     private int raceAttack;
     private int raceBlock;
@@ -14,6 +15,7 @@ class Pachimon {
     private int raceDiffence;
     private int raceSpeed;
     private int maxHp;
+
     private int hp;
     private int attack;
     private int brock;
@@ -53,7 +55,7 @@ class Pachimon {
         for (int i = 0; i < target.getType().length; i++) {
             compatibility = compatibility * target.getType()[i].typeCompatibilityCorrection(skill.getType());
         }
-        return compatibility;}
+        return compatibility; }
 
     public void setDead(boolean dead) { this.dead = dead; }
     public void setName(String name) { this.name = name; }

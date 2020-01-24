@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GameMaster {
-    ArrayList<Party> parties = new ArrayList<>(2);
-    ArrayList<Pachimon> fighter =  new ArrayList<>(2);
+    private ArrayList<Party> parties = new ArrayList<>(2);
+    private ArrayList<Pachimon> fighter =  new ArrayList<>(2);
 
     GameMaster(Party party1, Party party2) {
 
@@ -20,20 +20,16 @@ public class GameMaster {
         Random random = new Random();
         while (!(parties.get(0).isLose()) && !(parties.get(1).isLose())){
             int randomInt = random.nextInt(2);
-            int randomSkill1 = random.nextInt(4);
-            int randomSkill2 = random.nextInt(4);
 
             if (fighter.get(0).getSpeed() < fighter.get(1).getSpeed()) {
-                battle(fighter.get(1), fighter.get(0), randomSkill1, randomSkill2);
-
-            }
-            else if (fighter.get(1).getSpeed() < fighter.get(0).getSpeed()){
-                battle(fighter.get(0), fighter.get(1), randomSkill1, randomSkill2);
-
+                battle(fighter.get(1), fighter.get(0));
+            } else if (fighter.get(1).getSpeed() < fighter.get(0).getSpeed()){
+                battle(fighter.get(0), fighter.get(1));
             }else if (randomInt ==  0){
-                battle(fighter.get(1), fighter.get(0), randomSkill1, randomSkill2);
+                battle(fighter.get(1), fighter.get(0));
             }else {
-                battle(fighter.get(0), fighter.get(1), randomSkill1, randomSkill2);}
+                battle(fighter.get(0), fighter.get(1));
+            }
 
             System.out.println("");
             showHp(fighter.get(0));
@@ -58,19 +54,22 @@ public class GameMaster {
             }
         }
     }
-    void battle(Pachimon pachimon1, Pachimon pachimon2, int num1, int num2){
+    void battle(Pachimon pachimon1, Pachimon pachimon2){
+
+        Random random = new Random();
+        int randomSkill1 = random.nextInt(4);
+        int randomSkill2 = random.nextInt(4);
 
         if (!pachimon1.isDead()) {
-            pachimon1.execute(pachimon2, pachimon1.getSkills()[num1]);
-            System.out.println(pachimon1.getName()+"の"+pachimon1.getSkills()[num1].getName()+"!");
-            printCompatibility(pachimon1, pachimon2, num1);
+            pachimon1.execute(pachimon2, pachimon1.getSkills()[randomSkill1]);
+            System.out.println(pachimon1.getName()+"の"+pachimon1.getSkills()[randomSkill1].getName()+"!");
+            printCompatibility(pachimon1, pachimon2, randomSkill1);
             checkDead(pachimon2);
         }
-
         if (!pachimon2.isDead()){
-            pachimon2.execute(pachimon1, pachimon2.getSkills()[num2]);
-            System.out.println(pachimon2.getName()+"の"+pachimon2.getSkills()[num2].getName()+"!");
-            printCompatibility(pachimon2, pachimon1, num2);
+            pachimon2.execute(pachimon1, pachimon2.getSkills()[randomSkill2]);
+            System.out.println(pachimon2.getName()+"の"+pachimon2.getSkills()[randomSkill2].getName()+"!");
+            printCompatibility(pachimon2, pachimon1, randomSkill2);
             checkDead(pachimon1);
         }
     }
@@ -109,4 +108,7 @@ public class GameMaster {
         GameMaster gameMaster2 = new GameMaster(redTeam2, greenTeam2);
         gameMaster2.playGame();
     }
+
+    public ArrayList<Pachimon> getFighter() { return fighter; }
+    public ArrayList<Party> getParties() { return parties; }
 }

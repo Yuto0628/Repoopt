@@ -10,29 +10,18 @@ class Skill {
     private String special = "special";
 
     public void setName(String name) { this.name = name; }
-
     public void setType(String type) { this.type = type; }
-
     public void setPower(int power) { this.power = power; }
-
     public void setAccuracy(int accuracy) { this.accuracy = accuracy; }
-
     public void setSkillType(String skillType) { this.skillType = skillType; }
 
     public String getName() { return name; }
-
     public String getType() { return type; }
-
     public int getPower() { return power; }
-
     public int getAccuracy() { return accuracy; }
-
     public String getSkillType() { return skillType; }
-
     public String getDirect() { return direct; }
-
     public String getSpecial() { return special; }
-
 }
 
 class AquaTail extends Skill{

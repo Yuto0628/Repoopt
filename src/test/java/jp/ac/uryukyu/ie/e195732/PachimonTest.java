@@ -14,7 +14,7 @@ class PachimonTest {
 
     @Test
     void doTest(){
-        gameMaster.battle(gameMaster.fighter.get(0), gameMaster.fighter.get(1), 3,3);
+        gameMaster.battle(gameMaster.getFighter().get(0), gameMaster.getFighter().get(1));
     }
 }
 
