@@ -4,7 +4,6 @@ class Skill {
     private String name;
     private String type;
     private int power;
-    private int accuracy;
     private String skillType;
     private String direct = "direct";
     private String special = "special";
@@ -12,13 +11,11 @@ class Skill {
     public void setName(String name) { this.name = name; }
     public void setType(String type) { this.type = type; }
     public void setPower(int power) { this.power = power; }
-    public void setAccuracy(int accuracy) { this.accuracy = accuracy; }
     public void setSkillType(String skillType) { this.skillType = skillType; }
 
     public String getName() { return name; }
     public String getType() { return type; }
     public int getPower() { return power; }
-    public int getAccuracy() { return accuracy; }
     public String getSkillType() { return skillType; }
     public String getDirect() { return direct; }
     public String getSpecial() { return special; }
@@ -30,7 +27,6 @@ class AquaTail extends Skill{
         setName("アクアテール");
         setType(water.getName());
         setPower(90);
-        setAccuracy(90);
         setSkillType(getDirect());
     }
 }
@@ -41,7 +37,6 @@ class AirSlash extends Skill{
         setName("エアスラッシュ");
         setType(fright.getName());
         setPower(75);
-        setAccuracy(95);
         setSkillType(getSpecial());
     }
 }
@@ -52,7 +47,6 @@ class AirSlash extends Skill{
             setName("のしかかり");
             setType(normal.getName());
             setPower(85);
-            setAccuracy(100);
             setSkillType(getDirect());
         }
     }
@@ -63,7 +57,6 @@ class BrickBreak extends Skill{
         setName("瓦割り");
         setType(fighter.getName());
         setPower(75);
-        setAccuracy(100);
         setSkillType(getDirect());
     }
 }
@@ -74,7 +67,6 @@ class Crunch extends Skill{
         setName("噛み砕く");
         setType(evil.getName());
         setPower(80);
-        setAccuracy(100);
         setSkillType(getDirect());
     }
 }
@@ -85,7 +77,6 @@ class DragonPulse extends Skill{
         setName("竜の波動");
         setType(dragon.getName());
         setPower(85);
-        setAccuracy(100);
         setSkillType(getSpecial());
     }
 }
@@ -96,7 +87,6 @@ class Earthquake extends Skill{
         setName("地震");
         setType(earth.getName());
         setPower(100);
-        setAccuracy(100);
         setSkillType(getDirect());
     }
 }
@@ -107,7 +97,6 @@ class Flamethrower extends Skill{
         setName("火炎放射");
         setType(fire.getName());
         setPower(90);
-        setAccuracy(100);
         setSkillType(getSpecial());
     }
 }
@@ -118,7 +107,6 @@ class FlareBlitz extends Skill{
         setName("フレアドライブ");
         setType(fire.getName());
         setPower(120);
-        setAccuracy(100);
         setSkillType(getDirect());
     }
 }
@@ -129,7 +117,6 @@ class FocusBlast extends Skill{
         setName("気合い玉");
         setType(fighter.getName());
         setPower(110);
-        setAccuracy(70);
         setSkillType(getSpecial());
     }
 }
@@ -140,7 +127,6 @@ class LeafStorm extends Skill{
         setName("リーフストーム");
         setType(grass.getName());
         setPower(130);
-        setAccuracy(90);
         setSkillType(getSpecial());
     }
 }
@@ -151,7 +137,6 @@ class RockSlide extends Skill{
         setName("岩雪崩");
         setType(rock.getName());
         setPower(75);
-        setAccuracy(90);
         setSkillType(getDirect());
     }
 }
@@ -162,7 +147,6 @@ class SludgeBomb extends Skill{
         setName("ヘドロ爆弾");
         setType(poison.getName());
         setPower(90);
-        setAccuracy(100);
         setSkillType(getSpecial());
     }
 }
@@ -173,7 +157,6 @@ class Thunderbolt extends Skill{
         setName("10万ボルト");
         setType(electricity.getName());
         setPower(90);
-        setAccuracy(100);
         setSkillType(getSpecial());
     }
 }
@@ -184,7 +167,6 @@ class WeatherBall extends Skill{
         setName("ウェザーボール");
         setType(normal.getName());
         setPower(50);
-        setAccuracy(100);
         setSkillType(getSpecial());
     }
 }
@@ -194,8 +176,6 @@ class WingAttack extends Skill{
     WingAttack(){
         setName("翼で打つ");
         setType(fright.getName());
-        setPower(60);
-        setAccuracy(100);
         setSkillType(getDirect());
     }
 }
