@@ -1,20 +1,28 @@
 package jp.ac.uryukyu.ie.e195732;
 
+/**
+ * タイプの弱点や抵抗、無効にするタイプをまとめたクラス。サブクラスでそれぞれのタイプごとの弱点や抵抗、無効にするタイプを決定する。
+ */
 class Type {
     private String name;
     private String[] weak;
     private String[] resist;
     private String[] invalid;
 
-    double typeCompatibilityCorrection(String executer){
+    /**
+     * タイプ相性を元に補正を返すメソッド。この補正を元に最終的な技の威力を決定する。
+     * @param type 相性を確認するタイプ
+     * @return
+     */
+    double typeCompatibilityCorrection(String type){
         for (int i=0; i<this.weak.length; i++ )
-            if (executer.equals(this.weak[i])){ return 2; }
+            if (type.equals(this.weak[i])){ return 2; }
 
         for(int i=0; i<this.resist.length; i++)
-            if (executer.equals(this.resist[i])){ return 0.5; }
+            if (type.equals(this.resist[i])){ return 0.5; }
 
         for(int i=0; i<this.invalid.length; i++)
-            if (executer.equals(this.invalid[i])){ return 0; }
+            if (type.equals(this.invalid[i])){ return 0; }
 
         return 1;}
 

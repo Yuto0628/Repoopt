@@ -1,5 +1,8 @@
 package jp.ac.uryukyu.ie.e195732;
 
+/**
+ * パチモンをまとめるクラス。バトルをするときはパーティにいるパチモンたちが戦う
+ */
 public class Party {
     private String trainerName;
     private boolean lose = false;

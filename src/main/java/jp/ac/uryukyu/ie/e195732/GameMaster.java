@@ -3,6 +3,9 @@ package jp.ac.uryukyu.ie.e195732;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * ゲームを進行するクラス。コンストラクタの引数にバトルをするパーティをとる。
+ */
 public class GameMaster {
     private ArrayList<Party> parties = new ArrayList<>(2);
     private ArrayList<Pachimon> fighter =  new ArrayList<>(2);
@@ -16,6 +19,9 @@ public class GameMaster {
         fighter.add(parties.get(1).getMember()[0]);
     }
 
+    /**
+     *　実際にバトルを始める処理。どちらかのパーティが負けるまでバトルを続ける。
+     */
     void playGame(){
         Random random = new Random();
         while (!(parties.get(0).isLose()) && !(parties.get(1).isLose())){
@@ -54,6 +60,12 @@ public class GameMaster {
             }
         }
     }
+
+    /**
+     *パチモン同士を戦わせる処理。パチモンがどの技を使うかはランダムになっている。
+     * @param pachimon1　戦うパチモンその1のインスタンス
+     * @param pachimon2　戦うパチモンその2のインスタンス
+     */
     void battle(Pachimon pachimon1, Pachimon pachimon2){
 
         Random random = new Random();
@@ -73,6 +85,13 @@ public class GameMaster {
             checkDead(pachimon1);
         }
     }
+
+    /**
+     * タイプ相性を元に、攻撃が対象に有効だったかどうかを表示する
+     * @param executer　攻撃するパチモンのインスタンス
+     * @param target　攻撃されるパチモンのインスタンス
+     * @param num　攻撃するパチモンの技の番号
+     */
     void printCompatibility(Pachimon executer, Pachimon target,  int num){
         double compatibility = executer.checkCompatibility(target, executer.getSkills()[num]);
         if(compatibility == 0){
@@ -85,6 +104,11 @@ public class GameMaster {
             System.out.println("効果は抜群だ！");
         }
     }
+
+    /**
+     * パチモンが瀕死状態かをチェックする
+     * @param pachimon　状態を確認するパチモンのインスタンス
+     */
     void checkDead(Pachimon pachimon){
         if (pachimon.getHp() <= 0) {
             pachimon.setHp(0);
@@ -92,11 +116,14 @@ public class GameMaster {
             System.out.println(pachimon.getName()+"は倒れた");
         }
     }
+
+    /**
+     * パチモンの現在のHPを表示する
+     * @param pachimon　HPを表示するパチモンのインスタンス
+     */
     void showHp(Pachimon pachimon){
         System.out.println(pachimon.getName()+":"+pachimon.getHp()+"/"+pachimon.getMaxHp());
     }
-
-
 
     public ArrayList<Pachimon> getFighter() { return fighter; }
     public ArrayList<Party> getParties() { return parties; }

@@ -1,5 +1,8 @@
 package jp.ac.uryukyu.ie.e195732;
 
+/**
+ * 技のタイプや威力などの情報をまとめたクラス
+ */
 class Skill {
     private String name;
     private String type;

@@ -2,6 +2,9 @@ package jp.ac.uryukyu.ie.e195732;
 
 import java.util.Random;
 
+/**
+ * パチモンのステータスやタイプ、覚えている技などをまとめたクラス
+ */
 class Pachimon {
     private boolean dead = false;
     private String name;
@@ -23,14 +26,29 @@ class Pachimon {
     private int diffence;
     private int speed;
 
+    /**
+     * HPを求める処理
+     * @param raceHp
+     * @return
+     */
     int culcHp(int raceHp) {
         return (int) Math.floor((raceHp * 2 + 31) * 50 / 100) + 50 + 10;
     }
 
+    /**
+     * HP以外のステータスを求める処理
+     * @param raceValue
+     * @return
+     */
     int culcStatus(int raceValue) {
         return (int) Math.floor((raceValue * 2 + 31) * 50 / 100) + 5;
     }
 
+    /**
+     * 対象へのダメージを計算する処理
+     * @param target　攻撃される対象
+     * @param skill　攻撃に使う技
+     */
     void execute(Pachimon target, Skill skill) {
         Random random = new Random();
         double compatibility = 1;
@@ -50,6 +68,13 @@ class Pachimon {
             target.setHp(target.getHp() - damage);
         }
     }
+
+    /**
+     * タイプ相性を元に、対象に攻撃する技の威力への補正を求める
+     * @param target　攻撃される対象
+     * @param skill　攻撃する技
+     * @return
+     */
     double checkCompatibility(Pachimon target, Skill skill){//タイプ相性補正を求める
         double compatibility = 1;
         for (int i = 0; i < target.getType().length; i++) {
