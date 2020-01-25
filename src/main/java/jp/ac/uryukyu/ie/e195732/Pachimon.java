@@ -75,7 +75,7 @@ class Pachimon {
      * @param skill　攻撃する技
      * @return
      */
-    double checkCompatibility(Pachimon target, Skill skill){//タイプ相性補正を求める
+    double checkCompatibility(Pachimon target, Skill skill){
         double compatibility = 1;
         for (int i = 0; i < target.getType().length; i++) {
             compatibility = compatibility * target.getType()[i].typeCompatibilityCorrection(skill.getType());

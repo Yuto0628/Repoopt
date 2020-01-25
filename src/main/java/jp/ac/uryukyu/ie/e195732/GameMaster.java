@@ -24,6 +24,8 @@ public class GameMaster {
      */
     void playGame(){
         Random random = new Random();
+        System.out.println("バトル開始!!");
+        System.out.println("");
         while (!(parties.get(0).isLose()) && !(parties.get(1).isLose())){
             int randomInt = random.nextInt(2);
 
